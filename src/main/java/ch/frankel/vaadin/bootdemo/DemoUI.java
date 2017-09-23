@@ -24,6 +24,7 @@ public class DemoUI extends UI implements ViewDisplay {
         Button button = new Button("Display other view");
         button.addClickListener(e -> getUI().getNavigator().navigateTo("another"));
         VerticalLayout root = new VerticalLayout(button, layout);
+        getNavigator().setErrorView(ErrorView.class);
         setContent(root);
     }
 
