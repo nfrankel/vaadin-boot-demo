@@ -5,6 +5,7 @@ import com.vaadin.navigator.ViewDisplay;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.spring.annotation.SpringViewDisplay;
+import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
@@ -20,7 +21,10 @@ public class DemoUI extends UI implements ViewDisplay {
         layout = new VerticalLayout();
         layout.setMargin(true);
         layout.setSpacing(true);
-        setContent(layout);
+        Button button = new Button("Display other view");
+        button.addClickListener(e -> getUI().getNavigator().navigateTo("another"));
+        VerticalLayout root = new VerticalLayout(button, layout);
+        setContent(root);
     }
 
     @Override
