@@ -5,13 +5,15 @@ import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @SpringUI
 public class DemoUI extends UI {
 
-    @Autowired
-    private HelloService helloService;
+    private final HelloService helloService;
+
+    public DemoUI(HelloService helloService) {
+        this.helloService = helloService;
+    }
 
     @Override
     protected void init(VaadinRequest request) {
